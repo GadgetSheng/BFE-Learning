@@ -2,6 +2,15 @@ lockfileVersion: 5.4
 
 specifiers:
   '@vuepress/client': 2.0.0-beta.48
+  '@vuepress/plugin-active-header-links': 2.0.0-beta.48
+  '@vuepress/plugin-external-link-icon': 2.0.0-beta.48
+  '@vuepress/plugin-git': 2.0.0-beta.48
+  '@vuepress/plugin-medium-zoom': 2.0.0-beta.48
+  '@vuepress/plugin-nprogress': 2.0.0-beta.48
+  '@vuepress/plugin-palette': 2.0.0-beta.48
+  '@vuepress/plugin-prismjs': 2.0.0-beta.48
+  '@vuepress/plugin-search': 2.0.0-beta.48
+  '@vuepress/plugin-toc': 2.0.0-beta.48
   vue: ^3.2.37
   vuepress: 2.0.0-beta.48
 
@@ -10,6 +19,15 @@ dependencies:
 
 devDependencies:
   '@vuepress/client': registry.npmmirror.com/@vuepress/client/2.0.0-beta.48
+  '@vuepress/plugin-active-header-links': registry.npmmirror.com/@vuepress/plugin-active-header-links/2.0.0-beta.48
+  '@vuepress/plugin-external-link-icon': registry.npmmirror.com/@vuepress/plugin-external-link-icon/2.0.0-beta.48
+  '@vuepress/plugin-git': registry.npmmirror.com/@vuepress/plugin-git/2.0.0-beta.48
+  '@vuepress/plugin-medium-zoom': registry.npmmirror.com/@vuepress/plugin-medium-zoom/2.0.0-beta.48
+  '@vuepress/plugin-nprogress': registry.npmmirror.com/@vuepress/plugin-nprogress/2.0.0-beta.48
+  '@vuepress/plugin-palette': registry.npmmirror.com/@vuepress/plugin-palette/2.0.0-beta.48
+  '@vuepress/plugin-prismjs': registry.npmmirror.com/@vuepress/plugin-prismjs/2.0.0-beta.48
+  '@vuepress/plugin-search': registry.npmmirror.com/@vuepress/plugin-search/2.0.0-beta.48
+  '@vuepress/plugin-toc': registry.npmmirror.com/@vuepress/plugin-toc/2.0.0-beta.48
   vuepress: registry.npmmirror.com/vuepress/2.0.0-beta.48_cvdz5rjhltiqfsopd7oft5nvg4
 
 packages:
@@ -441,6 +459,22 @@ packages:
       - supports-color
     dev: true
 
+  registry.npmmirror.com/@vuepress/plugin-search/2.0.0-beta.48:
+    resolution: {integrity: sha512-1ADG3Zw6CBwERiW5l3spoONrHT6pcOGzlEiOhjAEYcOv7edzaoGQTahpgGvCXiXY5b11Z9bsr13NgCgr0YMGIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vuepress/plugin-search/-/plugin-search-2.0.0-beta.48.tgz}
+    name: '@vuepress/plugin-search'
+    version: 2.0.0-beta.48
+    dependencies:
+      '@vuepress/client': registry.npmmirror.com/@vuepress/client/2.0.0-beta.48
+      '@vuepress/core': registry.npmmirror.com/@vuepress/core/2.0.0-beta.48
+      '@vuepress/shared': registry.npmmirror.com/@vuepress/shared/2.0.0-beta.48
+      '@vuepress/utils': registry.npmmirror.com/@vuepress/utils/2.0.0-beta.48
+      chokidar: registry.npmmirror.com/chokidar/3.5.3
+      vue: registry.npmmirror.com/vue/3.2.37
+      vue-router: registry.npmmirror.com/vue-router/4.0.16_vue@3.2.37
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   registry.npmmirror.com/@vuepress/plugin-theme-data/2.0.0-beta.48:
     resolution: {integrity: sha512-7DH/tKiPg63wA77C9xNVF5Le5r1Apmd9mvz4NEeG0dhmuSPr456oM8aApE0s1XkY+vrmIXsTUjDK8+HvF8irUQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vuepress/plugin-theme-data/-/plugin-theme-data-2.0.0-beta.48.tgz}
     name: '@vuepress/plugin-theme-data'
@@ -452,6 +486,20 @@ packages:
       '@vuepress/shared': registry.npmmirror.com/@vuepress/shared/2.0.0-beta.48
       '@vuepress/utils': registry.npmmirror.com/@vuepress/utils/2.0.0-beta.48
       vue: registry.npmmirror.com/vue/3.2.37
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  registry.npmmirror.com/@vuepress/plugin-toc/2.0.0-beta.48:
+    resolution: {integrity: sha512-kSiOmaM2tNFRhjntmhK87eiDoULhXKwj/KlNBR2i4SUM2onq/GmEQf+UqSEweQbuSk53wh/oHE/89L3pYxeo+Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vuepress/plugin-toc/-/plugin-toc-2.0.0-beta.48.tgz}
+    name: '@vuepress/plugin-toc'
+    version: 2.0.0-beta.48
+    dependencies:
+      '@vuepress/client': registry.npmmirror.com/@vuepress/client/2.0.0-beta.48
+      '@vuepress/core': registry.npmmirror.com/@vuepress/core/2.0.0-beta.48
+      '@vuepress/utils': registry.npmmirror.com/@vuepress/utils/2.0.0-beta.48
+      vue: registry.npmmirror.com/vue/3.2.37
+      vue-router: registry.npmmirror.com/vue-router/4.0.16_vue@3.2.37
     transitivePeerDependencies:
       - supports-color
     dev: true

@@ -1,4 +1,8 @@
+.DS_Store
+
 node_modules
 .temp
 .cache
-.DS_Store
+dist
+
+pnpm-lock.yaml
