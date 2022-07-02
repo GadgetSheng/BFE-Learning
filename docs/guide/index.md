@@ -1,13 +1,7 @@
-### test
+## 复习导图
 
-```js
-const { prismjsPlugin } = require('@vuepress/plugin-prismjs')
+<!-- [[toc]] -->
 
-module.exports = {
-  plugins: [
-    prismjsPlugin({
-      // options
-    }),
-  ],
-}
-```
+![导图](./roadmap.png)
+
+[稀土掘金@axuebin](https://juejin.cn/post/6844904116339261447)

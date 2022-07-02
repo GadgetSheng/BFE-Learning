@@ -1,4 +1,4 @@
-import { defineUserConfig } from 'vuepress'
+import { defineUserConfig, defaultTheme } from 'vuepress'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
@@ -8,11 +8,18 @@ import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { tocPlugin } from '@vuepress/plugin-toc'
+import { navbar } from './navbar';
 
 // https://v2.vuepress.vuejs.org/reference/config.html
 export default defineUserConfig({
     title: 'Gadget-BFE',
     base: '/BFE-Learning/',
+    description: 'Learning',
+    theme: defaultTheme({
+        navbar
+    }),
+    // To add a custom favicon:
+    head: [['link', { rel: 'icon', href: '/logo.png' }]],
     plugins: [
         searchPlugin({ maxSuggestions: 8 }),
         mediumZoomPlugin(),
@@ -20,7 +27,9 @@ export default defineUserConfig({
         nprogressPlugin(),
         prismjsPlugin(),
         activeHeaderLinksPlugin(),
-        gitPlugin(),
+        gitPlugin({
+            contributors: false
+        }),
         palettePlugin({ preset: 'sass' }),
         tocPlugin()
     ]
