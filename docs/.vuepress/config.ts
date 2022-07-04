@@ -12,14 +12,14 @@ import { navbar } from './navbar';
 
 // https://v2.vuepress.vuejs.org/reference/config.html
 export default defineUserConfig({
-    title: 'Gadget-BFE',
+    title: 'Gadget Docs',
     base: '/BFE-Learning/',
-    description: 'Learning',
+    description: 'Study N Stops',
     theme: defaultTheme({
         navbar
     }),
     // To add a custom favicon:
-    head: [['link', { rel: 'icon', href: '/logo.png' }]],
+    head: [['link', { rel: 'icon', href: './images/logo.ico' }]],
     plugins: [
         searchPlugin({ maxSuggestions: 8 }),
         mediumZoomPlugin(),

@@ -3,10 +3,10 @@ home: true
 heroImage: /images/hero.png
 navbar: true
 actions:
-- text: Get Started →
-  link: /guide/
+- text: RoadMap→
+  link: /guide
   type: primary
-- text: Reference
+- text: VuePress@next
   link: https://v2.vuepress.vuejs.org/zh/
   type: secondary
 # features:
