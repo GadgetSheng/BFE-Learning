@@ -16,5 +16,5 @@ actions:
 #   details: Note every thing maybe good idea of mine.
 # - title: Practice
 #   details: Try nevermore and exercise ecmascript next.
-footer: gadget-sheng
+footer: Gadget
 ---

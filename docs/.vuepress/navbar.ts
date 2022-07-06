@@ -1,6 +1,6 @@
 export const navbar = [
     {
-        text: '通用基础',
+        text: '通用',
         children: [
             { text: '网络', link: '/common/network/' },
             { text: '浏览器', link: '/common/browser/' },
@@ -12,17 +12,22 @@ export const navbar = [
         children: [
             {
                 text: 'JS基础', children: [
-                    { text: 'this指向', link: '/basic/js/this' },
-                    { text: '面向对象', link: '/basic/js/oop' }
+                    { text: 'this指向', link: '/front/js/this' },
+                    { text: '面向对象', link: '/front/js/oop' }
                 ]
             },
-            { text: 'CSS基础', link: '/basic/css/' },
+            { text: 'CSS基础', link: '/front/css/' },
         ]
     },
     {
-        text: '框架源码',
+        text: '[React]',
         children: [
             { text: 'react', link: '/framework/react/' },
+        ]
+    },
+    {
+        text: '[Vue]',
+        children: [
             { text: 'vue', link: '/framework/vue/' }
         ]
     },
@@ -31,15 +36,11 @@ export const navbar = [
         children: [
             { text: 'Node', link: '/fullstack/node/' },
             { text: '模块化', link: '/fullstack/module/' },
-            {
-                text: '工程化', children: [
-                    { text: 'webpack', link: '/fullstack/webpack/' },
-                ]
-            }
+            { text: 'webpack', link: '/fullstack/webpack/' },
         ]
     },
     {
-        text: '数据结构&算法',
+        text: '数据+算法',
         children: [
             { text: '设计模式', link: '/data/desgin/' },
             { text: '数据结构', link: '/data/structure/' },
