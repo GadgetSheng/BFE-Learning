@@ -11,7 +11,7 @@ export const navbar = [
         text: '前端基础',
         children: [
             { text: 'JS基础', link: '/front/js/this.md' },
-            { text: 'CSS基础', link: '/front/css/' },
+            { text: 'CSS基础', link: '/front/css/position.md' },
         ]
     },
     {
@@ -53,19 +53,3 @@ export const navbar = [
     { text: 'Repo', link: 'https://github.com/steven7sheng/BFE-Learning' }
 ];
 
-
-export const sidebar = {
-    '/front/js/': [
-        'this.md',
-        'proto.md',
-
-    ],
-    'test': [
-        {
-            type: 'group',
-            text: '编写文档',
-            link: 'writing-content/',
-            children: ['markdown.md', 'typography.md'],
-        }
-    ]
-}

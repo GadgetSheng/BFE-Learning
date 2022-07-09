@@ -7,15 +7,17 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { tocPlugin } from '@vuepress/plugin-toc'
-import { navbar, sidebar } from './navbar';
+import { navbar } from './navbar';
+import { sidebar } from './sidebar';
 
 // https://v2.vuepress.vuejs.org/reference/config.html
 export default defineUserConfig({
     base: '/BFE-Learning/',
     theme: mixTheme({
-        navbar, sidebar,
         title: 'Gadget Docs',
         collapsible: true, // 可折叠
+        navbar,
+        sidebar,
     }),
     // hero area setting
     title: 'just Gadget!',
