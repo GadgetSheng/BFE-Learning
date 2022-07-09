@@ -176,3 +176,9 @@ Github中 个人开发设置，增加Personal Access Token
 权限只需要 勾选actions   这里的 GITHUB_TOKEN 与title无关
 在仓库设置中 增加仓库的 key 
 在设置中设置 pages 分支采用gh-pages, /root
+
+## 新增使用mix主题
+[mix-theme参考](https://vuepress-theme-mix.netlify.app/zh/)
+
+## v2插件参考
+https://github.com/vuepress/awesome-vuepress/blob/main/v2.md

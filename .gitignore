@@ -4,5 +4,5 @@ node_modules
 .temp
 .cache
 dist
-
+yarn.lack
 pnpm-lock.yaml

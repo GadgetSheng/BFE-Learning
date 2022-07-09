@@ -1,11 +1,16 @@
-// https://v2.vuepress.vuejs.org/reference/default-theme/styles.html
-:root {
-    // brand colors
-    --c-brand: #00bcd4;
-    --c-brand-light: #3494d9;
-}
+// ~~https://v2.vuepress.vuejs.org/reference/default-theme/styles.html~~
+// https://vuepress-theme-mix.netlify.app/zh/guide/appearance.html
+// :root {
+//     // brand colors
+//     --c-brand: #00bcd4;
+//     --c-brand-light: #3494d9;
+// }
 
-html.dark {
-    --c-brand: #00bcd4;
-    --c-brand-light: #3494d9;
-}
+// html.dark {
+//     --c-brand: #00bcd4;
+//     --c-brand-light: #3494d9;
+// }
+
+// thmem colors
+$themeColor: #00bcd4 !default;
+$themeDarkColor: #00bcd4 !default;
