@@ -7,6 +7,7 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { tocPlugin } from '@vuepress/plugin-toc'
+import { copyCodePlugin } from "vuepress-plugin-copy-code2"
 import { navbar } from './navbar';
 import { sidebar } from './sidebar';
 
@@ -31,6 +32,7 @@ export default defineUserConfig({
         nprogressPlugin(),
         activeHeaderLinksPlugin(),
         gitPlugin({ contributors: false }),
+        copyCodePlugin({ selector: '.theme-mix-content div[class*="language-"] pre' }),
         tocPlugin()
     ]
 })
