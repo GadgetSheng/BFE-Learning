@@ -1,11 +1,12 @@
 export const sidebar = {
     '/front/js/': [
-        'this',
+        'context',
         'proto',
         'promise',
         'event',
         'function',
-        'worker'
+        'worker',
+        'handy'
     ],
     '/front/css/': [
         'position',
@@ -14,5 +15,8 @@ export const sidebar = {
         'paint',
         'sass',
         'layout'
+    ],
+    '/lessons/': [
+        'this',
     ]
 }

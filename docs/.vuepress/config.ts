@@ -14,14 +14,13 @@ import { sidebar } from './sidebar';
 // https://v2.vuepress.vuejs.org/reference/config.html
 export default defineUserConfig({
     base: '/BFE-Learning/',
+    title: 'Gadget Docs',
     theme: mixTheme({
-        title: 'Gadget Docs',
+        title: 'just Gadget!',
         collapsible: true, // 可折叠
         navbar,
         sidebar,
     }),
-    // hero area setting
-    title: 'just Gadget!',
     description: 'Study N Stops',
     // To add a custom favicon:
     head: [['link', { rel: 'icon', href: '/images/logo.ico' }]],
@@ -32,6 +31,7 @@ export default defineUserConfig({
         nprogressPlugin(),
         activeHeaderLinksPlugin(),
         gitPlugin({ contributors: false }),
+        // use special theme 
         copyCodePlugin({ selector: '.theme-mix-content div[class*="language-"] pre' }),
         tocPlugin()
     ]

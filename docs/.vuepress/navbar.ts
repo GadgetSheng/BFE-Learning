@@ -10,8 +10,8 @@ export const navbar = [
     {
         text: '前端基础',
         children: [
-            { text: 'JS基础', link: '/front/js/this.md' },
-            { text: 'CSS基础', link: '/front/css/position.md' },
+            { text: 'JS基础', link: '/front/js/context' },
+            { text: 'CSS基础', link: '/front/css/position' },
         ]
     },
     {
@@ -20,12 +20,12 @@ export const navbar = [
             { text: 'react', link: '/framework/react/' },
         ]
     },
-    {
-        text: '[Vue]',
-        children: [
-            { text: 'vue', link: '/framework/vue/' }
-        ]
-    },
+    // {
+    //     text: '[Vue]',
+    //     children: [
+    //         { text: 'vue', link: '/framework/vue/' }
+    //     ]
+    // },
     {
         text: '全栈',
         children: [
