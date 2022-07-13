@@ -1,5 +1,5 @@
 # 手写部分
-
+applay/call/bind 参考[^0]
 ## apply
 
 ### 模拟apply第一步
@@ -18,7 +18,6 @@ Function.prototype.apply1=function(context){
     delete context.fn; // 删除临时方法
 }
 ```
-
 ### 模拟apply第二步
 `apply` 还能给定 参数 来执行函数
 1. 传入的参数就是一个数组
@@ -67,7 +66,7 @@ Function.prototype.apply3=function(context){
 一开始就埋坑--
 假设了context对象预先就**不存在**名为fn的属性
 :::
-- 想要完美，就需要保证fn的唯一性(ES6 Symbol)
+- 想要完美，就需要保证fn的唯一性(ES6 Symbol[^1])
 - ES5 属性名称只可能是一个字符串，做到这个字符串不可预期，一个随机数基本上就解决了。
 ```js
 function genUniqueProp(obj){
@@ -92,3 +91,32 @@ Function.prototype.apply4=function(context){
     return result;
 }
 ```
+
+## call
+```js
+Function.prototype.call1=function(context){
+    var newThis = context || window;
+    var args = arguments[1];
+    newThis.fn = this;
+    var args = [];
+    for(var i=1;i<arguments.length;i++){
+        args.push('arguments['+i+']');
+    }
+    var result=eval('newThis["fn"]('+args.toString()+')');
+    delete newThis.fn;
+    return result;
+}
+//测试一下
+var obj = { name: 'test' }
+function sayHello(age) {
+    return { name: this.name, age: age }
+}
+console.log(sayHello.call1(obj,24));
+// 完美输出{name: "test", age: 24}
+```
+
+---
+[^0]: [参考blog](https://github.com/jawil/blog/issues/16)
+[^1]: 注意点: <br/>
+`Symbol`值不能与其他类型的值进行运算。<br/>
+`Symbol`值作为对象属性名时，不能用点运算符。
