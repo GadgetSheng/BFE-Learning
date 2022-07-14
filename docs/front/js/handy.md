@@ -115,6 +115,66 @@ console.log(sayHello.call1(obj,24));
 // 完美输出{name: "test", age: 24}
 ```
 
+## bind
+[core-js/polyfill/bind](https://github.com/zloirock/core-js/blob/master/packages/core-js/internals/function-bind.js)
+
+ bind 方法的 length 属性是 1。
+ `Function.prototype.bind` 创建的函数对象不包含 `prototype` 属性
+1. bind创建一个新函数
+2. 调用时候，this值是传递给bind的第一个参数
+3. 它的参数是bind的其他参数+ 原本参数
+4. bind返回的绑定函数也能使用new操作符创建对象(=把原函数当成constructor)
+5. new的情况下，提供的thisArg被忽略，同时调用时的参数被提供给内部模拟函数
+> `func.bind(thisArg[, arg1[, arg2[, ...]]])`
+```js
+// 简单实现
+Function.prototype.bind1=function(context){
+    var target=this;
+    var args=Array.prototype.slice.call(arguments,1);
+    return function(){
+        return target.apply(context,args)
+    }
+}
+// curring 柯里化实现
+// bind方法还可以这样写 fn.bind(obj, arg1)(arg2).
+Function.prototype.bind2=function(context){
+    var target=this;
+    var args=Array.prototype.slice.call(arguments,1);
+    return function(){
+        var innerArgs=Array.prototype.slice.call(arguments);
+        var combinedArgs=args.concat(innerArgs);
+        return target.apply(context,combinedArgs);
+    }
+}
+// 兼容构造函数
+var arraySlice = Array.prototype.slice;
+Function.prototype.bind3 = function (thisArg) {
+    if (typeof this !== 'function') throw new TypeError('not a function');
+    var F = this;
+    var partArgs = arraySlice.call(arguments, 1);
+    var bound = function () {
+        var args = [].concat(partArgs, arraySlice.call(arguments));
+        if (this instanceof bound) {
+            return F.apply(this, args);
+        }
+        else
+            return F.apply(Object(thisArg), args);
+    }
+    var FPrototype = F.prototype;
+    if (typeof FPrototype === 'object' && FPrototype !== null) {
+        bound.prototype = FPrototype;
+    }
+    return bound;
+}
+
+// 测试
+var obj = { name: 'foo' }
+function sayHello(age) {
+    return { name: this.name, age: age }
+}
+console.log(sayHello.bind3(obj,24)());// 完美输出{name: "foo", age: 24}
+```
+
 ---
 [^0]: [参考blog](https://github.com/jawil/blog/issues/16)
 [^1]: 注意点: <br/>
