@@ -18,5 +18,6 @@ export const sidebar = {
     ],
     '/lessons/': [
         'this',
+        'vue_base'
     ]
 }
