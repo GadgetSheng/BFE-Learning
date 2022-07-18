@@ -6,7 +6,7 @@ export const sidebar = {
         'event',
         'function',
         'worker',
-        'handy'
+        'handy1'
     ],
     '/front/css/': [
         'position',

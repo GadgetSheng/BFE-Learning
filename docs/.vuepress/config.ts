@@ -21,9 +21,10 @@ export default defineUserConfig({
         navbar,
         sidebar,
     }),
+    markdown: { code: { lineNumbers: 4 } },
     description: 'Study N Stops',
     // To add a custom favicon:
-    head: [['link', { rel: 'icon', href: '/images/logo.ico' }]],
+    head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }]],
     plugins: [
         searchPlugin({ maxSuggestions: 8 }),
         mediumZoomPlugin(),

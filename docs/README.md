@@ -6,9 +6,9 @@ actions:
 - text: RoadMap→
   link: /guide
   type: primary
-- text: VuePress@next
-  link: https://v2.vuepress.vuejs.org/zh/
-  type: secondary
+# - text: VuePress@next
+#   link: https://v2.vuepress.vuejs.org/zh/
+#   type: secondary
 # features:
 # - title: Learning
 #   details: Learning all kinds of big front end technology.
@@ -16,5 +16,8 @@ actions:
 #   details: Note every thing maybe good idea of mine.
 # - title: Practice
 #   details: Try nevermore and exercise ecmascript next.
-footer: Gadget
+# footer: Gadget
 ---
+
+|[VuePress@next](https://v2.vuepress.vuejs.org/zh/)|[VuePress Mix Theme](https://vuepress-theme-mix.netlify.app/zh/)| [Awesome VuePress V2](https://github.com/vuepress/awesome-vuepress/blob/main/v2.md)|
+|--|--|--|

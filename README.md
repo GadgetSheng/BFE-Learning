@@ -1,4 +1,4 @@
 ## BFE-Learning
 
-GH-PAGES:
+see GH-PAGES:
 https://steven7sheng.github.io/BFE-Learning/
