@@ -18,6 +18,9 @@ actions:
 #   details: Try nevermore and exercise ecmascript next.
 # footer: Gadget
 ---
+<div class="flex-jc">
 
-|[VuePress@next](https://v2.vuepress.vuejs.org/zh/)|[VuePress Mix Theme](https://vuepress-theme-mix.netlify.app/zh/)| [Awesome VuePress V2](https://github.com/vuepress/awesome-vuepress/blob/main/v2.md)|
-|--|--|--|
+|[VuePress@next](https://v2.vuepress.vuejs.org/zh/)|[Awesome VuePress V2](https://github.com/vuepress/awesome-vuepress/blob/main/v2.md)|
+|--|--|
+
+</div>

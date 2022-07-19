@@ -1,13 +1,14 @@
-import { defineUserConfig } from 'vuepress'
-import { mixTheme } from 'vuepress-theme-mix'
+import { defineUserConfig, defaultTheme } from 'vuepress'
+// import { mixTheme } from 'vuepress-theme-mix'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
+import { mdPlusPlugin } from "@renovamen/vuepress-plugin-md-plus"
 import { gitPlugin } from '@vuepress/plugin-git'
 import { tocPlugin } from '@vuepress/plugin-toc'
-import { copyCodePlugin } from "vuepress-plugin-copy-code2"
+import { gungnirTheme } from "vuepress-theme-gungnir"
 import { navbar } from './navbar';
 import { sidebar } from './sidebar';
 
@@ -15,16 +16,14 @@ import { sidebar } from './sidebar';
 export default defineUserConfig({
     base: '/BFE-Learning/',
     title: 'Gadget Docs',
-    theme: mixTheme({
-        title: 'just Gadget!',
-        collapsible: true, // 可折叠
-        navbar,
-        sidebar,
-    }),
-    markdown: { code: { lineNumbers: 4 } },
     description: 'Study N Stops',
     // To add a custom favicon:
     head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }]],
+    theme: defaultTheme({
+        logo: '/logo.jpg',
+        navbar,
+        sidebar,
+    }),
     plugins: [
         searchPlugin({ maxSuggestions: 8 }),
         mediumZoomPlugin(),
@@ -32,9 +31,8 @@ export default defineUserConfig({
         nprogressPlugin(),
         activeHeaderLinksPlugin(),
         gitPlugin({ contributors: false }),
-        // use special theme 
-        copyCodePlugin({ selector: '.theme-mix-content div[class*="language-"] pre' }),
+        mdPlusPlugin({ all: true }),
         tocPlugin()
-    ]
+    ],
 })
 

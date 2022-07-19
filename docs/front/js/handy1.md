@@ -12,7 +12,9 @@
 3. 还能给定**参数数组**来执行函数
 4. 有返回值
 5. 避免重复属性 `object[Symbol()]`
+
 :::
+
 ### apply实现
 ::: details apply提示1+2
 func.`apply`(context) 和下面代码的功能类似 (假设`context`中预先不存在名为`fn`的属性)
@@ -93,16 +95,10 @@ Function.prototype.apply4=function(context){
 :::
 ### apply测试
 ```js
-function MyConstructor() {
-  for (let nProp = 0; nProp < arguments.length; nProp++) {
-    this['property' + nProp] = arguments[nProp];
-  }
-}
-let myArray = [4, 'Hello world!', false];
-let myInstance = MyConstructor.construct(myArray);
-console.log(myInstance.property1);                // logs 'Hello world!'
-console.log(myInstance instanceof MyConstructor); // logs 'true'
-console.log(myInstance.constructor);              // logs 'MyConstructor'
+const array = ['a', 'b'];
+const elements = [0, 1, 2];
+array.push.apply(array, elements);
+console.info(array); // ["a", "b", 0, 1, 2]
 ```
 
 ## 手写call

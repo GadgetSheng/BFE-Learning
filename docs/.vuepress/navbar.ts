@@ -11,7 +11,7 @@ export const navbar = [
         text: '前端基础',
         children: [
             { text: 'JS基础', link: '/front/js/context' },
-            { text: 'CSS基础', link: '/front/css/position' },
+            { text: 'CSS基础', link: '/front/css' },
         ]
     },
     {
