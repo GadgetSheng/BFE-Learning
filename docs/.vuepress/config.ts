@@ -18,7 +18,7 @@ export default defineUserConfig({
     title: 'Gadget Docs',
     description: 'Study N Stops',
     // To add a custom favicon:
-    head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }]],
+    head: [['link', { rel: 'icon', href: '/BFE-Learning/favicon.ico', type: 'image/x-icon' }]],
     theme: defaultTheme({
         logo: '/logo.jpg',
         navbar,
