@@ -47,6 +47,7 @@ export const navbar = [
         children: [
             { text: ' 项目/业务', link: '/others/project/' },
             { text: ' 性能优化', link: '/others/performance/' },
+            { text: 'Nginx', link: '/others/nginx' },
             { text: '刷题', link: '/others/exams/' },
         ]
     },
