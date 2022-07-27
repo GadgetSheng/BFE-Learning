@@ -9,12 +9,7 @@ export const sidebar = {
         'handy1'
     ],
     '/front/css/': [
-        'position',
-        'display',
-        'flex',
-        'paint',
-        'sass',
-        'layout'
+        'basic'
     ],
     '/lessons/': [
         'this',
