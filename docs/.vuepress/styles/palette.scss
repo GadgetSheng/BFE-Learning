@@ -4,16 +4,41 @@
     // brand colors
     --c-brand: #00bcd4;
     --c-brand-light: #3494d9;
+    // code blocks vars
+    --code-bg-color: rgb(62, 68, 80);
+    --c-tip-text-accent: #03a9f4;
+    --c-warning: rgb(247, 147, 0); // #e7c000;
+    --c-warning-bg: #ffc10743;
+    --c-warning-title: #323;
+    --c-warning-text: #333;
+    --c-danger: #e91e63;
+    --c-danger-title: #434;
+    --c-danger-text: #444;
+
 }
 
 html.dark {
     --c-brand: #00bcd4;
     --c-brand-light: #3494d9;
+    --c-danger: rgba(208, 58, 82, 0.35);
+    --c-danger-bg: #ae9e9e;
+
+    code {
+        color: #9c27b0;
+        background: #aaa;
+    }
 }
 
-// // thmem-mix colors
-// $themeColor: #00bcd4 !default;
-// $themeDarkColor: #3494d9 !default;
+code {
+    color: rgb(233, 30, 99);
+}
 
-// $codeColor: #fe7846 !default;
-// $codeDarkColor: #ed8a63 !default;
+.danger {
+    strong {
+        color: var(--c-brand-light);
+    }
+}
+
+strong {
+    color: #03a9f4
+}

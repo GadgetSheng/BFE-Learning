@@ -42,7 +42,7 @@ Function.prototype.apply2=function(context){
 ```
 :::
 
-::: details apply提示4
+::: warning apply提示4
 * `this` 参数可以传 `null` 或者为`undefined`,这是赋值`window`
 * 函数是有返回值的
 ```js
