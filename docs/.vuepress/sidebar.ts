@@ -13,6 +13,7 @@ export const sidebar = {
     ],
     '/lessons/': [
         'this',
-        'vue_base'
+        'vue_base',
+        'react-senior'
     ]
 }
