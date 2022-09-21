@@ -15,5 +15,8 @@ export const sidebar = {
         'this',
         'vue_base',
         'react-senior'
+    ],
+    '/others/':[
+        'monorepo'
     ]
 }

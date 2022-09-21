@@ -45,10 +45,10 @@ export const navbar = [
     {
         text: '其他',
         children: [
-            { text: ' 项目/业务', link: '/others/project/' },
-            { text: ' 性能优化', link: '/others/performance/' },
+            // { text: ' 项目/业务', link: '/others/project/' },
+            // { text: ' 性能优化', link: '/others/performance/' },
             { text: 'Nginx', link: '/others/nginx' },
-            { text: '刷题', link: '/others/exams/' },
+            // { text: '刷题', link: '/others/exams/' },
         ]
     },
     { text: 'Repo', link: 'https://github.com/steven7sheng/BFE-Learning' }
