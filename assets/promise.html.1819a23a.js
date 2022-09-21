@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6e548336","path":"/front/js/promise.html","title":"Promise","lang":"en-US","frontmatter":{},"excerpt":"","headers":[],"filePathRelative":"front/js/promise.md","git":{"createdTime":1663733460000,"updatedTime":1663733460000}}');export{e as data};

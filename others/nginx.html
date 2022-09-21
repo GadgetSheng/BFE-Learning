@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.48">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/BFE-Learning/favicon.ico" type="image/x-icon"><title>Nginx 学习(抄录) | Gadget Docs</title><meta name="description" content="Study N Stops">
+    <link rel="modulepreload" href="/BFE-Learning/assets/app.fb35af60.js"><link rel="modulepreload" href="/BFE-Learning/assets/nginx.html.c064f0d1.js"><link rel="modulepreload" href="/BFE-Learning/assets/nginx.html.f3451f6e.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.92d18969.js"><link rel="prefetch" href="/BFE-Learning/assets/guide.html.95a5ed3c.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.4e3559d5.js"><link rel="prefetch" href="/BFE-Learning/assets/react-senior.html.581fd023.js"><link rel="prefetch" href="/BFE-Learning/assets/this.html.c93e6016.js"><link rel="prefetch" href="/BFE-Learning/assets/vue_base.html.582d6adf.js"><link rel="prefetch" href="/BFE-Learning/assets/monorepo.html.bb282368.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.1fd97417.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.107e4554.js"><link rel="prefetch" href="/BFE-Learning/assets/basic.html.6f347dff.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.2ffb43fa.js"><link rel="prefetch" href="/BFE-Learning/assets/context.html.3acd1995.js"><link rel="prefetch" href="/BFE-Learning/assets/event.html.3330a231.js"><link rel="prefetch" href="/BFE-Learning/assets/function.html.7a3b3226.js"><link rel="prefetch" href="/BFE-Learning/assets/handy1.html.6f7b904e.js"><link rel="prefetch" href="/BFE-Learning/assets/promise.html.1819a23a.js"><link rel="prefetch" href="/BFE-Learning/assets/proto.html.a95edb81.js"><link rel="prefetch" href="/BFE-Learning/assets/worker.html.a38fac28.js"><link rel="prefetch" href="/BFE-Learning/assets/404.html.ee82e9f1.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.a6222171.js"><link rel="prefetch" href="/BFE-Learning/assets/guide.html.3b43a946.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.c933315c.js"><link rel="prefetch" href="/BFE-Learning/assets/react-senior.html.55b9296e.js"><link rel="prefetch" href="/BFE-Learning/assets/this.html.9d5b4ebb.js"><link rel="prefetch" href="/BFE-Learning/assets/vue_base.html.250fb782.js"><link rel="prefetch" href="/BFE-Learning/assets/monorepo.html.b5d59582.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.c84343b3.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.f050f6a6.js"><link rel="prefetch" href="/BFE-Learning/assets/basic.html.1123fc73.js"><link rel="prefetch" href="/BFE-Learning/assets/index.html.3ca43af3.js"><link rel="prefetch" href="/BFE-Learning/assets/context.html.213801ae.js"><link rel="prefetch" href="/BFE-Learning/assets/event.html.3c963036.js"><link rel="prefetch" href="/BFE-Learning/assets/function.html.40aa194e.js"><link rel="prefetch" href="/BFE-Learning/assets/handy1.html.f5864d4b.js"><link rel="prefetch" href="/BFE-Learning/assets/promise.html.6a999835.js"><link rel="prefetch" href="/BFE-Learning/assets/proto.html.6b0ee944.js"><link rel="prefetch" href="/BFE-Learning/assets/worker.html.20105362.js"><link rel="prefetch" href="/BFE-Learning/assets/404.html.b92710d7.js"><link rel="prefetch" href="/BFE-Learning/assets/404.0ea6fcd4.js"><link rel="prefetch" href="/BFE-Learning/assets/Layout.468ccae5.js">
+    <link rel="stylesheet" href="/BFE-Learning/assets/style.f85b0810.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/BFE-Learning/" class=""><img class="logo" src="/BFE-Learning/logo.jpg" alt="Gadget Docs"><span class="site-name can-hide">Gadget Docs</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="通用"><span class="title">通用</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="通用"><span class="title">通用</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/common/network/" class="" aria-label="网络"><!--[--><!--]--> 网络 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/common/browser/" class="" aria-label="浏览器"><!--[--><!--]--> 浏览器 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/common/safe/" class="" aria-label="安全"><!--[--><!--]--> 安全 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="前端基础"><span class="title">前端基础</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="前端基础"><span class="title">前端基础</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/front/js/context" class="" aria-label="JS基础"><!--[--><!--]--> JS基础 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/front/css" class="" aria-label="CSS基础"><!--[--><!--]--> CSS基础 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="[React]"><span class="title">[React]</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="[React]"><span class="title">[React]</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/framework/react/" class="" aria-label="react"><!--[--><!--]--> react <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="全栈"><span class="title">全栈</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="全栈"><span class="title">全栈</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/fullstack/node/" class="" aria-label="Node"><!--[--><!--]--> Node <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/fullstack/module/" class="" aria-label="模块化"><!--[--><!--]--> 模块化 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/fullstack/webpack/" class="" aria-label="webpack"><!--[--><!--]--> webpack <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="数据+算法"><span class="title">数据+算法</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="数据+算法"><span class="title">数据+算法</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/data/desgin/" class="" aria-label="设计模式"><!--[--><!--]--> 设计模式 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/data/structure/" class="" aria-label="数据结构"><!--[--><!--]--> 数据结构 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/data/algorithm/" class="" aria-label="算法"><!--[--><!--]--> 算法 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="其他"><span class="title">其他</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="其他"><span class="title">其他</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/others/nginx" class="router-link-active" aria-label="Nginx"><!--[--><!--]--> Nginx <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/steven7sheng/BFE-Learning" rel="noopener noreferrer" target="_blank" aria-label="Repo"><!--[--><!--]--> Repo <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="通用"><span class="title">通用</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="通用"><span class="title">通用</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/common/network/" class="" aria-label="网络"><!--[--><!--]--> 网络 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/common/browser/" class="" aria-label="浏览器"><!--[--><!--]--> 浏览器 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/common/safe/" class="" aria-label="安全"><!--[--><!--]--> 安全 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="前端基础"><span class="title">前端基础</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="前端基础"><span class="title">前端基础</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/front/js/context" class="" aria-label="JS基础"><!--[--><!--]--> JS基础 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/front/css" class="" aria-label="CSS基础"><!--[--><!--]--> CSS基础 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="[React]"><span class="title">[React]</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="[React]"><span class="title">[React]</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/framework/react/" class="" aria-label="react"><!--[--><!--]--> react <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="全栈"><span class="title">全栈</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="全栈"><span class="title">全栈</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/fullstack/node/" class="" aria-label="Node"><!--[--><!--]--> Node <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/fullstack/module/" class="" aria-label="模块化"><!--[--><!--]--> 模块化 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/fullstack/webpack/" class="" aria-label="webpack"><!--[--><!--]--> webpack <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="数据+算法"><span class="title">数据+算法</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="数据+算法"><span class="title">数据+算法</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/data/desgin/" class="" aria-label="设计模式"><!--[--><!--]--> 设计模式 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/data/structure/" class="" aria-label="数据结构"><!--[--><!--]--> 数据结构 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/BFE-Learning/data/algorithm/" class="" aria-label="算法"><!--[--><!--]--> 算法 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="其他"><span class="title">其他</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="其他"><span class="title">其他</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/BFE-Learning/others/nginx" class="router-link-active" aria-label="Nginx"><!--[--><!--]--> Nginx <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://github.com/steven7sheng/BFE-Learning" rel="noopener noreferrer" target="_blank" aria-label="Repo"><!--[--><!--]--> Repo <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><a href="/BFE-Learning/others/monorepo.html" class="sidebar-item sidebar-heading" aria-label="Monorepo 下的模块包设计实践"><!--[--><!--]--> Monorepo 下的模块包设计实践 <!--[--><!--]--></a><!----></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="nginx-学习-抄录" tabindex="-1"><a class="header-anchor" href="#nginx-学习-抄录" aria-hidden="true">#</a> Nginx 学习(抄录)</h1><div class="custom-container tip"><p class="custom-container-title">参考资料</p><ol><li><a href="https://www.hangge.com/blog/cache/detail_2979.html" target="_blank" rel="noopener noreferrer">nginx反向代理location和proxy_pass参数<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://blog.csdn.net/u010391029/article/details/50395680" target="_blank" rel="noopener noreferrer">nginx之proxy_redirect详解<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://blog.csdn.net/weixin_43122090/article/details/105461971" target="_blank" rel="noopener noreferrer">Nginx面试题<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://blog.csdn.net/wangbin_0729/article/details/82109693" target="_blank" rel="noopener noreferrer">Nginx配置文件详解<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://blog.csdn.net/tjcyjd/article/details/50695922" target="_blank" rel="noopener noreferrer">Nginx配置文件解析<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li></ol></div><h2 id="_1-简介" tabindex="-1"><a class="header-anchor" href="#_1-简介" aria-hidden="true">#</a> 1.简介</h2><ol><li><p>Nginx Nginx是一个轻量级 高性能的反向代理Web服务器 它实现了非常高效的反向代理 负载平衡，可以处理2-3w并发连接数，官方称5w。</p></li><li><p>优缺点</p><ul><li>优点 <ul><li>占内存小，高并发处理响应快：开启10个nginx才占用150M内存，2-3W的并发连接数</li><li>配置简单，功能强大： 可实现http服务器，虚拟主机，反向代理，负载均衡</li><li>稳定性高，节省宽带： 宕机的概率非常小，支持Gzip压缩，可以添加浏览器缓存</li></ul></li><li>缺点 <ul><li>Nginx处理静态文件好，消耗内存少，动态处理差</li><li>处理动态页面，一般前端用nginx作为反向代理扛住压力</li></ul></li></ul></li><li><p>应用场景</p><ul><li>正向代理 (发送请求方的代理) <ul><li>正向代理屏蔽客户端，当我们想要访问外网时，先经过正向代理服务器，去帮我们访问互联网</li><li>正向代理可以添加访问资源的控制策略</li></ul></li><li>反向代理 (服务接收方的代理) <ul><li>反向代理屏蔽服务器，当外网想访问我们的服务器时，先访问反向代理，再转发到我们的服务器</li><li>对服务器起到保护作用，隐藏源服务器的存在和特性，用于安全机制，可充当互联网云和web服务器的中间层</li><li>应用： 解决“同源策略”造成的跨域问题，浏览器发送请求后，统一被nginx反向代理接收， 不同路由通过<code>location + upstream</code>进行分发给后端业务处理服务器进行处理</li></ul></li></ul></li></ol><h2 id="_2-配置" tabindex="-1"><a class="header-anchor" href="#_2-配置" aria-hidden="true">#</a> 2. 配置</h2><h3 id="_1-程序目录结构" tabindex="-1"><a class="header-anchor" href="#_1-程序目录结构" aria-hidden="true">#</a> 1. 程序目录结构</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># tree /usr/local/nginx</span>
+/usr/local/nginx
+├── client_body_temp
+├── conf                             <span class="token comment"># Nginx所有配置文件的目录</span>
+│   ├── fastcgi.conf                 <span class="token comment"># fastcgi相关参数的配置文件</span>
+│   ├── fastcgi.conf.default         <span class="token comment"># fastcgi.conf的原始备份文件</span>
+│   ├── fastcgi_params               <span class="token comment"># fastcgi的参数文件</span>
+│   ├── fastcgi_params.default       
+│   ├── koi-utf
+│   ├── koi-win
+│   ├── mime.types                   <span class="token comment"># 媒体类型</span>
+│   ├── mime.types.default
+│   ├── nginx.conf                   <span class="token comment"># Nginx主配置文件</span>
+│   ├── nginx.conf.default
+│   ├── scgi_params                  <span class="token comment"># scgi相关参数文件</span>
+│   ├── scgi_params.default  
+│   ├── uwsgi_params                 <span class="token comment"># uwsgi相关参数文件</span>
+│   ├── uwsgi_params.default
+│   └── win-utf
+├── fastcgi_temp                     <span class="token comment"># fastcgi临时数据目录</span>
+├── html                             <span class="token comment"># Nginx默认站点目录</span>
+│   ├── 50x.html                     <span class="token comment"># 错误页面优雅替代显示文件，例如当出现502错误时会调用此页面</span>
+│   └── index.html                   <span class="token comment"># 默认的首页文件</span>
+├── logs                             <span class="token comment"># Nginx日志目录</span>
+│   ├── access.log                   <span class="token comment"># 访问日志文件</span>
+│   ├── error.log                    <span class="token comment"># 错误日志文件</span>
+│   └── nginx.pid                    <span class="token comment"># pid文件，Nginx进程启动后，会把所有进程的ID号写到此文件</span>
+├── proxy_temp                       <span class="token comment"># 临时目录</span>
+├── sbin                             <span class="token comment"># Nginx命令目录</span>
+│   └── nginx                        <span class="token comment"># Nginx的启动命令</span>
+├── scgi_temp                        <span class="token comment"># 临时目录</span>
+└── uwsgi_temp                       <span class="token comment"># 临时目录</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-配置文件" tabindex="-1"><a class="header-anchor" href="#_2-配置文件" aria-hidden="true">#</a> 2. 配置文件</h3><ol><li>配置简介 nginx.conf 由多块组成，最外面的块是 main main包含Events和HTTP，HTTP包含upstream和多个Server Server又包含多个location: main(全局配置) server(主机设置) upstream（负载均衡服务器设置) 和location(URL匹配特定位置的设置)</li></ol><ul><li>main块设置的指令将影响其他所有设置；</li><li>server块的指令主要用于指定主机和端口；</li><li>upstream指令主要用于负载均衡，设置一系列的后端服务器；</li><li>location块用于匹配网页位置。 这四者的关系是： server 继承 main，location 继承 server upstream既不会继承其他设置 也不会被继承 在这四个部分中，同时每个部分都包含若干指令，这些指令主要是 Nginx的主模块指令 事件模块指令，HTTP核心模块指令 同时每个部分还可以使用其他HTTP模块指令 [例如 HTTP SSL HttpGzip Static 和 Addition]</li></ul><p><img src="https://www.wangjxk.top/img/nginxconf.png" alt="struct"></p><div class="language-conf ext-conf line-numbers-mode"><pre class="language-conf"><code>user root;                        #主模块指令，指定Nginx Worker进程运行用户以及用户组
+worker_processes  auto；          #指定nginx要开启的进程树，每个进程平均耗费10M-12M内存，建议和cpu的数量一致
+error_log  /data/nginx/log/error.log;  #全局错误日志文件,日志输出级别有debug、info、notice、warn、error、crit可供选择
+pid /data/nginx/log/nginx.pid;    #用来指定进程pid（进程标识符）的存储文件位置
+
+# 事件区块开始
+events {                            
+    worker_connections  1024；      # 每个worker进程支持的最大连接数
+}
+
+# HTTP区块开始
+http {                              
+    include       mime.types；      # Nginx支持的媒体类型库文件，类型由mime.type文件定义
+    default_type  text/plain；      # 默认的媒体类型
+    sendfile        on；       		 # 开启高效传输模式
+    keepalive_timeout  65；       	 # 连接超时
+    server_tokens off;              # 关闭nginx版本提示
+    client_max_body_size 50m;       # 设置允许客户端请求的最大的单个文件字节数
+    gzip on;                        # 开启gzip压缩输出，减少网络传输
+    
+    #log_format是Nginx的HttpLog模块指令，用于指定Nginx日志的输出格式， main和log404为此日志输出格式的名称
+    log_format main &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+    &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+    &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+    log_format log404 &#39;$status [$time_local] $remote_addr $host$request_uri $sent_http_location&#39;;
+
+		#指定了一个负载均衡器的名称subloanIntrantDomain,在后面需要的地方直接调用即可。
+    upstream subloanIntrantDomain { #默认策略为轮训
+    		ip_hash;
+    		#hash $request_uri;
+    	  server 122.70.77.84:9081;
+    	  server 122.70.77.84:9090 down;   #当前的server暂时不参与负载均衡
+    	  #允许请求失败的次数3,当超过最大次数时，返回proxy_next_upstream 模块定义的错误；
+    	  #在经历了max_fails次失败后，暂停服务的时间20s
+    	  server 122.70.77.84:9091 max_fails=3 fail_timeout=20s; 
+    }
+    
+    # 第一个Server区块开始，表示一个独立的虚拟主机站点
+    server {            								
+        listen       80；      							# 提供服务的端口，默认80
+        server_name  localhost；       			# 提供服务的域名主机名
+        
+        #设置日志按照时间进行分割，$year-$month-$day-$hour-access.log定义按天进行分割
+        if($time_iso8601 ~ &quot;^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})&quot;){
+        	 set $year $1;
+        	 set $month $2;
+        	 set $day $3;
+        	 set $hour $4;
+        	 set $minutes $5;
+        	 set $seconds $6;
+        }
+        #access_log用来指定此虚拟主机的访问日志存放路径，最后的main用于指定访问日志的输出格式
+        access_log /data/nginx/log/$year-$month-$day-$hour-access.log main;
+        
+        # 第一个location区块开始，动态请求
+        location ^~ /ICBCWAPBankB7HR/api/ {
+        	proxy_http_version 1.1;
+        	proxy_set_header Host $host;
+        	proxy_set_header X-Real-IP $remote_addr;   #记录客户端ip，被HTTP代理用来表示与它产生TCP连接的设备IP
+        	proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for; #记录HTTP请求端真实IP
+        	#以上三行，目的是将代理服务器收到的用户的信息传到真实服务器上
+        	proxy_set_header Accept-Encording &#39;&#39;;
+        	proxy_set_header Connection &quot;Keep-Alive&quot;;
+        	proxy_pass http://subloanIntrantDomain/ICBCWAPBankB7HR/;
+        	proxy_redirect off;
+        }
+        
+         # 第二个location区块开始，静态页面
+        location ^~ /ICBCWAPBankB7HR/ {
+          alias /data/nginx/client/;   #http://xxxx/ICBCWAPBankB7HR/ -&gt;访问：/data/nginx/client/
+          index index.html;    # 默认的首页文件，多个用空格分开
+          add_header X-Frame-options &#39;SAMEORIGIN&#39;; #同源可在 &lt;frame&gt;, &lt;/iframe&gt; 或者 &lt;object&gt; 中展现
+          #启用XSS过滤，如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载
+          add_header X-XSS-Protection &#39;1;mode=block&#39;; 
+          add_header X-Content-Type-Options &#39;nosniff&#39;;
+          expires 4h;  #缓存4h
+        }
+      									
+        error_page   403  /error.html；     		# 出现对应的http状态码时，使用error.html回应客户
+        
+        # location区块开始，访问50x.html
+        location = /err.html {          		
+            root /ICBCWAPBankB7HR；      			# 指定对应的站点目录为html
+        }
+    }
+    
+    ##安全控制，防sql注入以及xss
+    if($request_method !~* GET|POST|PUT|DELETE){
+    	return 444;
+    }
+    # .....
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>2 location描述 location指令的作用是根据用户请求的URI来执行不同的应用，也就是根据用户请求的网站URL进行匹配，匹配成功即进行相关的操作。location支持正则表达式匹配，也支持条件判断匹配，用户可以通过location指令实现Nginx对动、静态网页进行过滤处理。使用location URL匹配配置还可以实现反向代理，用于实现PHP动态解析或者负载负载均衡。</p><p>语法</p><table><thead><tr><th>匹配符</th><th>匹配规则</th><th>优先级</th></tr></thead><tbody><tr><td><code>=</code></td><td>精确匹配</td><td>1</td></tr><tr><td><code>^~</code></td><td>以某个字符串开头</td><td>2</td></tr><tr><td><code>~</code></td><td>区分大小写的正则匹配</td><td>3</td></tr><tr><td><code>~*</code></td><td>不区分大小写的正则匹配</td><td>4</td></tr><tr><td><code>!~</code></td><td>区分大小写不匹配的正则</td><td>5</td></tr><tr><td><code>!~*</code></td><td>不区分大小写不匹配的正则</td><td>6</td></tr><tr><td><code>/</code></td><td>通用匹配，任何请求都会匹配到</td><td>7</td></tr></tbody></table><div class="language-conf ext-conf line-numbers-mode"><pre class="language-conf"><code>#优先级1,精确匹配，根路径，eg：https://baidu.com.cn/
+location =/ {
+  return 400;
+}
+
+#优先级2,以某个字符串开头, 从域名开始以av开头的，优先匹配这里，区分大小写，～代表输入字符
+#eg: https://baidu.com.cn/av/login/匹配，https://baidu.com.cn/login/av不匹配
+#root实际访问路径：https://baidu.com.cn/data/av/av/
+location ^~ /av {
+  root /data/av/;
+}
+
+#优先级3，区分大小写的正则匹配，匹配/media*****路径
+location ~ /media {
+  alias /data/static/;
+}
+
+#优先级4 ，不区分大小写的正则匹配，所有的****.jpg|gif|png 都走这里
+location ~* .*\.(jpg|gif|png|js|css)$ {
+  root  /data/av/;
+}
+
+#优先7，通用匹配
+location / {
+  return 403;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="常用指令" tabindex="-1"><a class="header-anchor" href="#常用指令" aria-hidden="true">#</a> 常用指令</h3><ul><li>proxy_pass：代理转发 <ul><li>url加上/为绝对路径，则 Nginx不会把 location 中匹配的路径部分加入代理 uri</li><li>url不加/，则 Nginx会把 location 中匹配的路径部分加入代理 uri</li></ul></li><li>proxy_redirect：修改被代理服务器返回的响应头中的location头域跟refresh头域数值 <ul><li>值为：default|off|redirect replacement</li><li>default：默认</li><li>off：禁止所有的proxy_redirect指令</li><li>代替的字段中可以不写服务器名，使用\ ，使用服务器的基本名称和端口</li></ul></li><li>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上,说白了就是两者拼接文件路径的手段不一样。 <ul><li>root的处理结果是：root路径＋location路径</li><li>alias的处理结果是：使用alias路径替换location路径</li></ul></li><li>expires：设置缓存时间 <ul><li>时间戳会设置expires报文头</li><li>正数或零：设置cache-control：max-age=x</li><li>负数：nocache</li></ul></li><li>proxy_cache：服务器的缓存配置，可在转发请求时对资源进行缓存</li></ul><div class="language-conf ext-conf line-numbers-mode"><pre class="language-conf"><code>server {
+  listen   80;
+  server_name  www.boke.com;
+  location / {
+    //重定向至该地址和端口
+    proxy_pass http://192.168.1.154:8080; 
+    //修改返回的响应头中的location
+    proxy_redirect http://192.168.1.154:8080/wuman/  http://www.boke.com/wuman/;
+  }
+}
+
+#测试
+[root@localhost nginx]# curl -I http://www.boke.com/wuman
+HTTP/1.1 301 Moved Permanently
+Server: nginx
+Date: Thu, 24 Dec 2015 12:08:34 GMT
+Content-Type: text/html; charset=iso-8859-1
+Connection: keep-alive
+Location: http://www.boke.com/wuman/
+
+
+//4h的强缓存
+location ^~ /xxxx/{
+  alias /data/nginx/client/;
+  index index.html;
+  expires 4h;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3"><li>负载均衡 upstream是Nginx的HTTP Upstream模块，这个模块通过一个简单的调度算法来实现客户端IP到后端服务器的负载均衡。</li></ol><p>Nginx的负载均衡模块目前支持4种调度算法，后两项属于第三方的调度方法。</p><p>轮询（默认）：每个请求按时间顺序逐一分配到不同的后端服务器，如果后端某台服务器宕机，故障系统被自动剔除，使用户访问不受影响； Weight：指定轮询权值，Weight值越大，分配到的访问机率越高，主要用于后端每个服务器性能不均的情况下； ip_hash：每个请求按访问IP的hash结果分配，这样来自同一个IP的访客固定访问一个后端服务器，有效解决了动态网页存在的session共享问题； fair：比上面两个更加智能的负载均衡算法。此种算法可以依据页面大小和加载时间长短智能地进行负载均衡，也就是根据后端服务器的响应时间来分配请求，响应时间短的优先分配。Nginx本身是不支持fair的，如果需要使用这种调度算法，必须下载Nginx的upstream_fair模块； url_hash：按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，可以进一步提高后端缓存服务器的效率。Nginx本身是不支持url_hash的，如果需要使用这种调度算法，必须安装Nginx 的hash软件包。 在HTTP Upstream模块中，可以通过server指令指定后端服务器的IP地址和端口，同时还可以设定每个后端服务器在负载均衡调度中的状态。常用的状态有：</p><p>down：表示当前的server暂时不参与负载均衡； backup：预留的备份机器。当其他所有的非backup机器出现故障或者忙的时候，才会请求backup机器，因此这台机器的压力最轻； max_fails：允许请求失败的次数，默认为1。当超过最大次数时，返回proxy_next_upstream 模块定义的错误； fail_timeout：在经历了max_fails次失败后，暂停服务的时间。max_fails可以和fail_timeout一起使用。 注意，当负载调度算法为ip_hash时，后端服务器在负载均衡调度中的状态不能是weight和backup。</p><ol start="4"><li>使用变量解析 日志格式设置：</li></ol><p>$remote_addr与$http_x_forwarded_for用以记录客户端的ip地址；</p><p>$remote_user：用来记录客户端用户名称；</p><p>$time_local： 用来记录访问时间与时区；</p><p>$request： 用来记录请求的url与http协议；</p><p>$status： 用来记录请求状态；成功是200，</p><p>$body_bytes_sent ：记录发送给客户端文件主体内容大小；</p><p>$http_referer：用来记录从那个页面链接访问过来的；</p><p>$http_user_agent：记录客户浏览器的相关信息；</p><p>通常web服务器放在反向代理的后面，这样就不能获取到客户的IP地址了，通过$remote_add拿到的IP地址是反向代理服务器的iP地址。反向代理服务器在转发请求的http头信息中，可以增加x_forwarded_for信息，用以记录原有客户端的IP地址和原来客户端的请求的服务器地址。</p><p>其他变量</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>$args此变量与请求行中的参数相等
+
+$content_length等于请求行的“Content_Length”的值。
+
+$content_type等同与请求头部的”Content_Type”的值
+
+$document_root等同于当前请求的root指令指定的值
+
+$document_uri与$uri一样
+
+$host与请求头部中“Host”行指定的值或是request到达的server的名字（没有Host行）一样
+
+$limit_rate允许限制的连接速率
+
+$request_method等同于request的method，通常是“GET”或“POST”
+
+$remote_addr客户端ip
+
+$remote_port客户端port
+
+$remote_user等同于用户名，由ngx_http_auth_basic_module认证
+
+$request_filename当前请求的文件的路径名，由root或alias和URI request组合而成
+
+$request_body_file
+
+$request_uri含有参数的完整的初始URI
+
+$query_string与$args一样
+
+$sheeme http模式（http,https）尽在要求是评估例如
+
+Rewrite ^(.+)$ $sheme://example.com$; Redirect;
+
+$server_protocol等同于request的协议，使用“HTTP/或“HTTP/
+
+$server_addr request到达的server的ip，一般获得此变量的值的目的是进行系统调用。为了避免系统调用，有必要在listen指令中指明ip，并使用bind参数。
+
+$server_name请求到达的服务器名
+
+$server_port请求到达的服务器的端口号
+
+$uri等同于当前request中的URI，可不同于初始值，例如内部重定向时或使用index
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_3-常用命令" tabindex="-1"><a class="header-anchor" href="#_3-常用命令" aria-hidden="true">#</a> 3. 常用命令</h2><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>nginx <span class="token parameter variable">-t</span>  <span class="token comment">#检测配置文件是否有语法错误，然后退出</span>
+nginx <span class="token parameter variable">-s</span> reopen <span class="token comment">#重启Nginx</span>
+nginx <span class="token parameter variable">-s</span> reload <span class="token comment">#重新加载Nginx配置文件，然后以优雅的方式重启Nginx</span>
+nginx <span class="token parameter variable">-s</span> stop <span class="token comment">#强制停止Nginx服务</span>
+nginx <span class="token parameter variable">-s</span> quit <span class="token comment">#优雅地停止Nginx服务（即处理完所有请求后再停止服务）</span>
+nginx <span class="token parameter variable">-v</span> <span class="token comment">#显示版本信息并退出</span>
+<span class="token function">killall</span> nginx  <span class="token comment">#杀死所有nginx进程</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-http头部解析" tabindex="-1"><a class="header-anchor" href="#_4-http头部解析" aria-hidden="true">#</a> 4. HTTP头部解析</h3><h4 id="_1-x-frame-options" tabindex="-1"><a class="header-anchor" href="#_1-x-frame-options" aria-hidden="true">#</a> 1. X-Frame-Options</h4><p>HTTP 响应头是用来给浏览器指示允许一个页面可否在 <code>&lt;frame&gt;, &lt;/iframe&gt;</code> 或者 <code>&lt;object&gt;</code>中展现的标记</p><p>DENY：表示该页面不允许在frame中展示，即便是在相同域名的页面中嵌套也不允许。</p><p>SAMEORIGIN：表示该页面可以在相同域名页面的frame中展示。</p><p>ALLOW-FROM uri：表示该页面可以在指定来源的frame中展示</p><h4 id="_2-host、x-real-ip、x-forwarder-for" tabindex="-1"><a class="header-anchor" href="#_2-host、x-real-ip、x-forwarder-for" aria-hidden="true">#</a> 2. Host、X-Real-IP、X-Forwarder-For</h4><p>参考资料：HTTP X-Forwarded-For 介绍(opens new window)</p><p>X-Forwarded-For 是一个 HTTP 扩展头部。HTTP/1.1（RFC 2616）协议并没有对它的定义，它最开始是由 Squid 这个缓存代理软件引入，用来表示 HTTP 请求端真实 IP。</p><p>XFF 的内容由「英文逗号 + 空格」隔开的多个部分组成，最开始的是离服务端最远的设备 IP，然后是每一级代理设备的 IP。</p><p>如果一个 HTTP 请求到达服务器之前，经过了三个代理 Proxy1、Proxy2、Proxy3，IP 分别为 IP1、IP2、IP3，用户真实 IP 为 IP0，那么按照 XFF 标准，服务端最终会收到以下信息：</p><p>X-Forwarded-For: IP0, IP1, IP2 X-Real-IP 通常被 HTTP 代理用来表示与它产生 TCP 连接的设备 IP，这个设备可能是其他代理，也可能是真正的请求端。需要注意的是，X-Real-IP 目前并不属于任何标准，代理和 Web 应用之间可以约定用任何自定义头来传递这个信息。</p><p>解析：X-Forwarded-For用于负载均衡算法，基于XFF的会话保护，对x-forwarded-for字段的内容进行hash，根据哈希结果进行负载转发，x-forwarded-for字段的内容相同，就会负载到同一台后端服务器上。其他手段：基于cookie的会话保持，安全属性httponly（只读）、secure（https传输）、same-site=none（任何第三方携带）/strict（同源携带</p><h4 id="_3-x-xss-protection" tabindex="-1"><a class="header-anchor" href="#_3-x-xss-protection" aria-hidden="true">#</a> 3. X-XSS-Protection</h4><p>HTTP X-XSS-Protection 响应头是 Internet Explorer，Chrome 和 Safari 的一个特性，当检测到跨站脚本攻击 (XSS (en-US) (opens new window))时，浏览器将停止加载页面。</p><div class="language-conf ext-conf line-numbers-mode"><pre class="language-conf"><code>X-XSS-Protection: 0
+X-XSS-Protection: 1
+X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 1; report=&lt;reporting-uri&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>0 禁止XSS过滤。 1 启用XSS过滤（通常浏览器是默认的）。 如果检测到跨站脚本攻击，浏览器将清除页面（删除不安全的部分）。</p><ul><li>1;mode=block 启用XSS过滤。 如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载。</li><li>1; report=(reporting-URI)(Chromium only) 启用XSS过滤。 如果检测到跨站脚本攻击，浏览器将清除页面并使用CSP report-uri (en-US) (opens new window)指令的功能发送违规报告。</li></ul><h4 id="_4-x-content-type-options" tabindex="-1"><a class="header-anchor" href="#_4-x-content-type-options" aria-hidden="true">#</a> 4. X-Content-Type-Options</h4><p>X-Content-Type-Options HTTP 消息头相当于一个提示标志，被服务器用来提示客户端一定要遵循在 Content-Type (opens new window)首部中对 MIME 类型 (opens new window)的设定，而不能对其进行修改。这就禁用了客户端的 MIME 类型嗅探 (opens new window)行为，换句话说，也就是意味着网站管理员确定自己的设置没有问题。</p><div class="language-conf ext-conf line-numbers-mode"><pre class="language-conf"><code>X-Content-Type-Options: nosniff
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>下面两种情况的请求将被阻止：</p><ul><li>请求类型是&quot;style&quot; 但是 MIME 类型不是 &quot;text/css&quot;，</li><li>请求类型是&quot;script&quot; 但是 MIME 类型不是 JavaScript MIME 类型(opens new window)</li></ul><h4 id="_5-cache-control、expires、max-age" tabindex="-1"><a class="header-anchor" href="#_5-cache-control、expires、max-age" aria-hidden="true">#</a> 5. Cache-control、Expires、max-age</h4><ul><li>Cache-control 用于控制HTTP缓存（在HTTP/1.0中可能部分没实现，仅仅实现了 Pragma: no-cache）</li><li>Expires 表示存在时间，允许客户端在这个时间之前不去检查（发请求），等同max-age的效果。但是如果同时存在，则被Cache-Control的max-age覆盖。</li></ul><div class="language-conf ext-conf line-numbers-mode"><pre class="language-conf"><code>Respense Headers
+cache-control: max-age=2592000           缓存的持续时间
+expires: Thu, 04 Apr 2019 09:22:20 GMT   缓存的到期时间
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><!--[--><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><!----></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/BFE-Learning/assets/app.fb35af60.js" defer></script>
+  </body>
+</html>

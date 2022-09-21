@@ -1,0 +1,1 @@
+import{_ as r,o as a,c as o,a as e,d as s}from"./app.fb35af60.js";const t={},c=e("h1",{id:"promise",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#promise","aria-hidden":"true"},"#"),s(" Promise")],-1),i=[c];function _(n,d){return a(),o("div",null,i)}var h=r(t,[["render",_],["__file","promise.html.vue"]]);export{h as default};
